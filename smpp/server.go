@@ -283,7 +283,7 @@ func (srv *server) defaultAuth(s Session, p pdu.Body) error {
 		resp.Header().Status = pdu.InvalidPassword
 		err = errors.New("invalid passwd")
 	}
-	resp.Fields().Set(pdufield.SystemID, DefaultSystemID)
+	resp.Fields().Set(pdufield.SystemID, user.String())
 
 	writeErr := s.Write(resp)
 	if err != nil {
